@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Pizza World</title>
+  </head>
+  <style>
+  #menu{
+    list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #dedede;
+  }
+  form{
+    float:left;
+  }
+  input {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+  </style>
+  <body>
+    <!--Full menu container-->
+    <div class="container" id="menu">
+        <!--Size Radio-->
+        <div id="size" class="incoming">
+            <form id="size_form" class="radio">
+                <h3>Size</h3>
+                <input type="radio" name="size" class="size" value="Personal" checked>Personal</input><br>
+                <input type="radio" name="size" class="size" value="Medium">Medium</input><br>
+                <input type="radio" name="size" class="size" value="Large">Large</input><br>
+                <input type="radio" name="size" class="size" value="Extra Large">Extra Large</input>
+            </form>
+        </div>
+        <!--/Size Radio-->
+        <!--Meat Check Boxes-->
+        <div id="meat" class="incoming">
+            <form id="meat_form" class="checkbox">
+                <h3>Meat</h3>
+                <input type="checkbox" name="meat" class="meat" value="Pepperoni">Pepperoni</input><br>
+                <input type="checkbox" name="meat" class="meat" value="Sausage">Sausage</input><br>
+                <input type="checkbox" name="meat" class="meat" value="Canadian Bacon">Canadian Bacon</input><br>
+                <input type="checkbox" name="meat" class="meat" value="Ground Beef">Ground Beef</input><br>
+                <input type="checkbox" name="meat" class="meat" value="Anchovy">Anchovy</input><br>
+                <input type="checkbox" name="meat" class="meat" value="Chicken">Chicken</input>
+            </form>
+        </div>
+        <!--/Meat Check Boxes-->
+        <!--Cheese Radio-->
+        <div id="cheese">
+            <form class="radio">
+                <h3>Cheese</h3>
+                <input type="radio" name="cheese" class="cheese" value="Regular" checked>Regular</input><br>
+                <input type="radio" name="cheese" class="cheese" value="No Cheese">No Cheese</input><br>
+                <input type="radio" name="cheese" class="cheese" value="Extra Cheese">Extra Cheese</input>
+            </form>
+        </div>
+
+        <!--/Cheese Radio-->
+        <!--Crust Radio-->
+        <div id="crust">
+            <form class="radio">
+                <h3>Crust</h3>
+                <input type="radio" name="crust" class="crust" value="Garlic Butter">Garlic Butter</input><br>
+                <input type="radio" name="crust" class="crust" value="Cheese Stuffed">Cheese Stuffed</input><br>
+                <input type="radio" name="crust" class="crust" value="Spicy">Spicy</input><br>
+                <input type="radio" name="crust" class="crust" value="House Special" checked>House Special</input>
+            </form>
+        </div>
+        <!--/Crust Radio-->
+        <!--Sause Radio-->
+        <div id="sauce">
+            <form class="radio">
+                <h3>Sauce</h3>
+                <input type="radio" name="sauce" class="sauce" value="Marinara" checked>Marinara</input><br>
+                <input type="radio" name="sauce" class="sauce" value="White">White</input><br>
+                <input type="radio" name="sauce" class="sauce" value="Barbeque">Barbeque</input><br>
+                <input type="radio" name="sauce" class="sauce" value="No Sause">No Sause</input>
+            </form>
+        </div>
+        <!--/Sause Radio-->
+        <!--Veg Check Boxes-->
+        <div id="veg">
+            <form class="checkbox">
+                <h3>Vegetables</h3>
+                <input type="checkbox" name="veg" class="veg" value="Tomatoes">Tomatoes</input><br>
+                <input type="checkbox" name="veg" class="veg" value="Onions">Onions</input><br>
+                <input type="checkbox" name="veg" class="veg" value="Olives">Olives</input><br>
+                <input type="checkbox" name="veg" class="veg" value="Green Peppers">Green Peppers</input><br>
+                <input type="checkbox" name="veg" class="veg" value="Mushrooms">Mushrooms</input><br>
+                <input type="checkbox" name="veg" class="veg" value="Pineapple">Pineapple</input><br>
+                <input type="checkbox" name="veg" class="veg" value="Spinach">Spinach</input><br>
+                <input type="checkbox" name="veg" class="veg" value="Jalapeno">Jalapeno</input><br>
+            </form>
+        </div>
+        <!--/Veg Check Boxes-->
+
+    </div>
+            <!--Submit or Cancel-->
+            <button onclick="order()">Submit</button>
+            <!--/Submit or Cancel-->
+    <!--Full menu container-->
+    <!--Results -->
+    <div class="container" id="results">
+      <p id="rsize"></p>
+      <p id="rmeat"></p>
+      <p id="rcheese"></p>
+      <p id="rcrust"></p>
+      <p id="rsause"></p>
+      <p id="rveg"></p>
+      <p id="rtotal"></p>
+
+
+
+    </div>
+
+    
+
+
+
+    <!-- Optional JavaScript -->
+    <script>
+    function order() {
+
+      //get Size Value
+      var size = document.getElementsByName('size');
+      var size_value;
+      for(var i = 0; i < size.length; i++){
+      if(size[i].checked){
+      size_value = size[i].value;
+      }
+      }
+      //testing return value
+      console.log(size_value);
+
+
+      //get meat value
+      var meat = document.getElementsByName('meat');
+      var meat_value = [];
+      for(var i=0; i < meat.length; i++){
+        if(meat[i].checked){
+          meat_value.push(meat[i].value);
+        }
+      }
+      console.log(meat_value)
+
+
+      // get cheese value
+      var cheese = document.getElementsByName('cheese');
+      var cheese_value;
+      for (var i=0; i < cheese.length; i++){
+        if(cheese[i].checked){
+          cheese_value = cheese[i].value;
+        }
+      }
+      console.log(cheese_value)
+
+
+      // get crust value
+      var crust = document.getElementsByName('crust');
+      var crust_value;
+      for (var i=0; i < crust.length; i++){
+        if(crust[i].checked){
+          crust_value = crust[i].value;
+        }
+      }
+      console.log(crust_value)
+
+
+      // get sauce value
+      var sauce = document.getElementsByName('sauce');
+      var sauce_value;
+      for (var i=0; i < sauce.length; i++){
+        if(sauce[i].checked){
+          sauce_value = sauce[i].value;
+        }
+      }
+      console.log(sauce_value)
+      
+
+      //get veg value
+      var veg = document.getElementsByName('veg');
+      var veg_value = [];
+      for(var i=0; i < veg.length; i++){
+        if(veg[i].checked){
+          veg_value.push(veg[i].value);
+        }
+      }
+      console.log(veg_value)
+
+
+    //add values
+    function total() {
+      var cost;
+       
+      //size
+      if (size_value == "Personal"){
+        cost = 6.00;
+      }else if (size_value == "Medium"){
+        cost = 10.00;
+      }else if (size_value == "Large"){
+        cost = 14.00;
+      }else if (size_value == "Extra Large"){
+        cost = 16.00;
+      }
+      document.getElementById('rsize').innerHTML = size_value + ": $" + cost;
+     //cheese
+     if (cheese_value == "Extra Cheese"){
+       cost = cost + 3.00;
+       document.getElementById('rcheese').innerHTML = cheese_value + ": +$3.00";
+     }else{
+      document.getElementById('rcheese').innerHTML = cheese_value + ": +$0.00:";
+     }
+     //crust
+     if (crust_value == "Cheese Stuffed"){
+       cost = cost + 3.00;
+       document.getElementById('rcrust').innerHTML = crust_value + ": +$3.00";
+     }else{
+      document.getElementById('rcrust').innerHTML = crust_value + ": +$0.00";
+     }
+     //meat
+     if (meat_value.length > 1){
+       var extra_meat = meat_value.length - 1
+       cost = cost + extra_meat;
+       document.getElementById('rmeat').innerHTML = meat_value + ": +" + extra_meat + ".00";
+     }else {document.getElementById('rmeat').innerHTML = meat_value + ": +$0.00"}
+     //veg
+     if (veg_value.length > 1){
+       var extra_veg = veg_value.length - 1
+       cost = cost + extra_veg;
+       document.getElementById('rveg').innerHTML = veg_value + ": +" + extra_veg + ".00";
+     }else{document.getElementById('rveg').innerHTML = veg_value + ": +$0.00"}
+     console.log(cost)
+     
+     //Total
+     document.getElementById('rtotal').innerHTML = "Total cost : $" + cost + ".00";
+    }
+ 
+    total()
+
+
+    }  
+    
+    </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+
+</html>
